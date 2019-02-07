@@ -77,7 +77,7 @@ window.onload = function() {
 		game.physics.arcade.overlap(bouncy, stars, collectStar, null, this);
 	}
 	
-	function collectStar (player, star) {
+	function collectStar (bouncy, star) {
 
     // Removes the star from the screen
     star.kill();
