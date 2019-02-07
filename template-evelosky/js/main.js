@@ -23,6 +23,8 @@ window.onload = function() {
 	
 	var score = 0;
 	var scoreText;
+	
+	var stars;
     
     function create() {
 		//  We're going to be using physics, so enable the Arcade Physics system
