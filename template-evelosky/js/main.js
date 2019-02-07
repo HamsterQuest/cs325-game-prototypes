@@ -44,7 +44,7 @@ window.onload = function() {
         // Center it in X, and position its top 15 pixels from the top of the world.
         //var style = { font: "25px Verdana", fill: "#9999ff", align: "center" };
         //var text = game.add.text( game.world.centerX, 15, "Build something.", style );
-        text.anchor.setTo( 0.5, 0.0 );
+        //text.anchor.setTo( 0.5, 0.0 );
 		
 		// stars 
 		stars = game.add.group();
