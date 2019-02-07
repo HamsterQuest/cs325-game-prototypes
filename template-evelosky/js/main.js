@@ -26,7 +26,7 @@ window.onload = function() {
     
     function create() {
 		//  We're going to be using physics, so enable the Arcade Physics system
-		game.physics.startSystem(Phaser.Physics.ARCADE);
+		//game.physics.startSystem(Phaser.Physics.ARCADE);
 	
 		game.add.sprite(0, 0, 'sky');
         // Create a sprite at the center of the screen using the 'logo' image.
