@@ -39,9 +39,28 @@ window.onload = function() {
         
         // Add some text using a CSS style.
         // Center it in X, and position its top 15 pixels from the top of the world.
-        var style = { font: "25px Verdana", fill: "#9999ff", align: "center" };
-        var text = game.add.text( game.world.centerX, 15, "Build something.", style );
+        //var style = { font: "25px Verdana", fill: "#9999ff", align: "center" };
+        //var text = game.add.text( game.world.centerX, 15, "Build something.", style );
         text.anchor.setTo( 0.5, 0.0 );
+		
+		// stars 
+		stars = game.add.group();
+
+		stars.enableBody = true;
+
+		//  Here we'll create 12 of them evenly spaced apart
+		for (var i = 0; i < 12; i++)
+		{
+			//  Create a star inside of the 'stars' group
+			var star = stars.create(i * 70, 0, 'star');
+
+			//  Let gravity do its thing
+			star.body.gravity.y = 6;
+
+			//  This just gives each star a slightly random bounce value
+			star.body.bounce.y = 0.7 + Math.random() * 0.2;
+		}
+	
     }
     
     function update() {
@@ -51,5 +70,18 @@ window.onload = function() {
         // This function returns the rotation angle that makes it visually match its
         // new trajectory.
         bouncy.rotation = game.physics.arcade.accelerateToPointer( bouncy, game.input.activePointer, 500, 500, 500 );
-    }
+		game.physics.arcade.overlap(bouncy, stars, collectStar, null, this);
+	}
+	
+	function collectStar (player, star) {
+
+    // Removes the star from the screen
+    star.kill();
+	
+	 //  Add and update the score
+    score += 10;
+    scoreText.text = 'Score: ' + score;
+
+
+}
 };
