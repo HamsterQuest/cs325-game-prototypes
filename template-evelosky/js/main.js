@@ -15,11 +15,17 @@ window.onload = function() {
     function preload() {
         // Load an image and call it 'logo'.
         game.load.image( 'logo', 'assets/phaser.png' );
+		game.load.image('sky', 'assets/sky.png');
+		game.load.image('star', 'assets/star.png');
     }
     
     var bouncy;
+	
+	var score = 0;
+	var scoreText;
     
     function create() {
+		game.add.sprite(0, 0, 'sky');
         // Create a sprite at the center of the screen using the 'logo' image.
         bouncy = game.add.sprite( game.world.centerX, game.world.centerY, 'logo' );
         // Anchor the sprite at its center, as opposed to its top-left corner.
