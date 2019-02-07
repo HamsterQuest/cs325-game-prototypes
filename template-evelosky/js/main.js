@@ -85,7 +85,7 @@ window.onload = function() {
     star.kill();
 	
 	 //  Add and update the score
-    score += 10;
+    score -= 10;
     scoreText.text = 'Score: ' + score;
 
 
