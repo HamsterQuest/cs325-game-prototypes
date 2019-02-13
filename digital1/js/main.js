@@ -23,6 +23,8 @@ window.onload = function() {
 	
 	var score = 0;
 	var scoreText;
+	
+	var stars;
     
     function create() {
 		//  We're going to be using physics, so enable the Arcade Physics system
@@ -77,7 +79,7 @@ window.onload = function() {
 		game.physics.arcade.overlap(bouncy, stars, collectStar, null, this);
 	}
 	
-	function collectStar (player, star) {
+	function collectStar (bouncy, star) {
 
     // Removes the star from the screen
     star.kill();
