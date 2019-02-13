@@ -6,6 +6,8 @@ This repository should be marked as GitHub Pages. This lets you run your games d
 Check it out: [http://gmu-cs325.github.io/cs325-game-prototypes/](http://gmu-cs325.github.io/cs325-game-prototypes/)
 Fork this repository and start making your own games!
 
+Here is mine: https://hamsterquest.github.io/cs325-game-prototypes/
+
 You can't run the `index.html` for a Phaser game directly from your local machine without a local webserver.
 If you try, the images won't load (your browser will prevent it, thinking it is malicious).
 To get around this, if you have Python, simply enter the directory and
