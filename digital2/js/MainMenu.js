@@ -25,9 +25,11 @@ GameStates.makeMainMenu = function( game, shared ) {
 
             music = game.add.audio('trainMusic');
             music.play();
-
-            game.add.sprite(0, 0, 'titlePage');
-
+            game.add.sprite(-50, -200, 'titlePage');
+						var style = { font: "50px Verdana", fill: "#7777ff", align: "center" };
+						var text = game.add.text( game.world.centerX, 15, "Press to start (again?)", style );
+						text.anchor.setTo( 0.5, 0.0 );
+						game.world.bringToTop(text);
             playButton = game.add.button( 303, 400, 'playButton', startGame, null, 'over', 'out', 'down');
 
         },
