@@ -38,7 +38,7 @@ GameStates.makeGame = function( game, shared ) {
 
         update: function () {
 
-            
+
         }
     };
 };
