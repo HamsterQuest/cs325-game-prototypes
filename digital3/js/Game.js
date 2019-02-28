@@ -116,7 +116,7 @@ GameStates.makeGame = function( game, shared ) {
 
             for (var i = 0; i < tnum; i++){
                 var hole = Math.floor(Math.random() * 5) + 1;
-                this.addOneTrain(800, hole * 160);
+                this.addOneTrain(800, hole * 160 -100);
             }
         },
     };
