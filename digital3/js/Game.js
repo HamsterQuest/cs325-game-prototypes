@@ -82,7 +82,7 @@ GameStates.makeGame = function( game, shared ) {
             // Add a vertical velocity to the shoe
             shoe1.body.gravity.y = 1000;
          
-            shoe1.body.velocity.y = -350;
+            shoe1.body.velocity.y = -300; // because we don't like the player
         },
 
         jump2: function() {
@@ -116,7 +116,7 @@ GameStates.makeGame = function( game, shared ) {
 
             for (var i = 0; i < tnum; i++){
                 var hole = Math.floor(Math.random() * 5) + 1;
-                this.addOneTrain(800, hole * 120 + 10);
+                this.addOneTrain(800, hole * 160);
             }
         },
     };
