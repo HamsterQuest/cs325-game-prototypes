@@ -1,6 +1,6 @@
 "use strict";
 
-GameStates.makeMainMenu = function( game, shared ) {
+GameStates.makeLostScreen = function( game, shared ) {
 
 	var playButton = null;
 
