@@ -47,8 +47,7 @@ GameStates.makeGame = function( game, shared ) {
           game.physics.arcade.enable(shoe2);
 
           // Add gravity to the shoes to make it fall
-          shoe1.body.gravity.y = 1000;
-          shoe2.body.gravity.y = 1000;
+          
 
           // Call the 'jump' function when the spacekey is hit
           key1 = game.input.keyboard.addKey(Phaser.Keyboard.W);
@@ -81,11 +80,14 @@ GameStates.makeGame = function( game, shared ) {
         // Make the shoe jump
         jump1: function() {
             // Add a vertical velocity to the shoe
+            shoe1.body.gravity.y = 1000;
+         
             shoe1.body.velocity.y = -350;
         },
 
         jump2: function() {
             // Add a vertical velocity to the shoe
+             shoe2.body.gravity.y = 1000;
             shoe2.body.velocity.y = -350;
         },
         addOneTrain: function(x, y) {
