@@ -27,7 +27,7 @@ GameStates.makePreloader = function( game ) {
             game.load.atlas('playButton', 'assets/play_button.png', 'assets/play_button.json');
             //game.load.audio('footmusic', ['assets/foot.mp3']);
 						game.load.audio('trainMusic', ['assets/train.mp3']);
-						game.load.audio('trainMusic', ['assets/foot.mp3']);
+						game.load.audio('footMusic', ['assets/foot.mp3']);
             //	+ lots of other required assets here
             game.load.image( 'train1', 'assets/train1.png' );
 						game.load.image( 'train2', 'assets/train2.png' );
