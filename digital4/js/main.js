@@ -25,6 +25,12 @@ window.onload = function() {
 	var scoreText;
 	
 	var stars;
+	
+	var timer;
+	
+	var fallSpeed = 10;
+	
+	var time = 1600;
     
     function create() {
 		//  We're going to be using physics, so enable the Arcade Physics system
@@ -53,18 +59,8 @@ window.onload = function() {
 
 		stars.enableBody = true;
 
-		//  Here we'll create 12 of them evenly spaced apart
-		for (var i = 0; i < 12; i++)
-		{
-			//  Create a star inside of the 'stars' group
-			var star = stars.create(i * 70, 0, 'star');
-
-			//  Let gravity do its thing
-			star.body.gravity.y = 6;
-
-			//  This just gives each star a slightly random bounce value
-			star.body.bounce.y = 0.7 + Math.random() * 0.2;
-		}
+		//  timer time
+		timer = game.time.events.loop(time, this.makeStars, this);
 		
 		scoreText = game.add.text(16, 16, 'score: 0', { fontSize: '32px', fill: '#000' });
     }
@@ -87,7 +83,40 @@ window.onload = function() {
 	 //  Add and update the score
     score -= 10;
     scoreText.text = 'Score: ' + score;
+	}
+	function makeStars(){
+		/*for (var i = 0; i < 12; i++)
+		{
+			//  Create a star inside of the 'stars' group
+			var star = stars.create(i * 70, 0, 'star');
 
+			//  Let gravity do its thing
+			star.body.gravity.y = fallSpeed;
 
-}
+			//  This just gives each star a slightly random bounce value
+			star.body.bounce.y = 0.7 + Math.random() * 0.2;
+		}*/
+		
+			var x = Math.floor(Math.random() * 840) + 10;
+		// Create a star at the position x and y
+            var star = game.add.sprite(x, 0, 'star');
+            star.scale.setTo(1,1);
+            // Add the train to our previously created group
+            stars.add(star);
+
+            // Enable physics on the star
+            game.physics.arcade.enable(star);
+
+            // make star go down
+            star.body.gravity.y = fallSpeed;
+			
+			if(fallSpeed < 60){
+				fallSpeed = fallSpeed+5;
+				time= time -50;
+			}
+
+            // Automatically kill the train when it's no longer visible
+            star.checkWorldBounds = true;
+            star.outOfBoundsKill = true;
+	}
 };
