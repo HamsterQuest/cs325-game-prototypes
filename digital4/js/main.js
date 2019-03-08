@@ -60,7 +60,7 @@ window.onload = function() {
 		stars.enableBody = true;
 
 		//  timer time
-		timer = game.time.events.loop(time, this.makeStars, this);
+		timer = game.time.events.loop(time, makeStars, this);
 		
 		scoreText = game.add.text(16, 16, 'score: 0', { fontSize: '32px', fill: '#000' });
     }
@@ -101,7 +101,7 @@ window.onload = function() {
 		// Create a star at the position x and y
             var star = game.add.sprite(x, 0, 'star');
             star.scale.setTo(1,1);
-            // Add the train to our previously created group
+            // Add the star to our previously created group
             stars.add(star);
 
             // Enable physics on the star
@@ -112,7 +112,7 @@ window.onload = function() {
 			
 			if(fallSpeed < 60){
 				fallSpeed = fallSpeed+5;
-				time= time -50;
+				time = time -50;
 			}
 
             // Automatically kill the train when it's no longer visible
