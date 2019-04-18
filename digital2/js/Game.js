@@ -81,12 +81,12 @@ GameStates.makeGame = function( game, shared ) {
         // Make the shoe jump
         jump1: function() {
             // Add a vertical velocity to the shoe
-            shoe1.body.velocity.y -= 350;
+            shoe1.body.velocity.y = -350;
         },
 
         jump2: function() {
             // Add a vertical velocity to the shoe
-            shoe2.body.velocity.y -= 350;
+            shoe2.body.velocity.y = -350;
         },
         addOneTrain: function(x, y) {
             // Create a train at the position x and y
