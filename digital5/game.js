@@ -3,8 +3,8 @@
 */
 
 //set width and height variables for game
-var width = 1600;
-var height = 900;
+var width = 1200;
+var height = 700;
 //create game object and initialize the canvas
 var game = new Phaser.Game(width, height, Phaser.AUTO, null, {preload: preload, create: create, update: update});
 
@@ -30,21 +30,6 @@ function preload() {
 	//load physics body polygon data from a local JSON file
 	this.game.load.physics("physics", "asset/data.json");
 
-	/*
-	* alternatively, load physics body data from a URL
-	* this is useful for testing, but requires an internet connection to load
-	* uncomment the code below and comment out the code above to test
-	* replace with the code provided by Loon Physics as well
-	*/
-
-	/*
-	this.game.load.physics("physics", "https:" +
-	"//firebasestorage.googleapis.com/v0/b/lo" +
-	"on-ride-webpage.appspot.com/o/lDce4f2cCT" +
-	"hC5RWtGaT4pe2flEy1%2Fjson%2F-KgeJbYbQyaA" +
-	"sfGEh6Mk?alt=media&token=2db1f23f-5122-4" +
-	"e21-9776-55d260c7248e");
-	*/
 }
 function create() {
 
@@ -65,7 +50,7 @@ function create() {
 	//add physics body polygon
 	ball.body.clearShapes();
 	//ball.body.loadPolygon("physics", "semicircle");
-	ball.body.setCircle(200);
+	ball.body.setCircle(300);
 	//make ball kinematic so that it does not respond to collisions
 	ball.body.kinematic = true;
 
