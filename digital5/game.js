@@ -1,10 +1,6 @@
-/*
-* Example by Loonride - https://loonride.com/learn/phaser/p2-physics-bodies
-*/
-
 //set width and height variables for game
-var width = 1200;
-var height = 700;
+var width = 1600;
+var height = 900;
 //create game object and initialize the canvas
 var game = new Phaser.Game(width, height, Phaser.AUTO, null, {preload: preload, create: create, update: update});
 
@@ -17,24 +13,23 @@ var maxBallSpeed = 1000;
 var showBodies = false;
 var currentTime = 0;
 var timer;
-var gameDuration = 20;
+var gameDuration = 30;
 
 function preload() {
 	//set background color of canvas
 	game.stage.backgroundColor = '#eee';
 
 	//load assets
-	game.load.image('ball', 'asset/ball.png');
-	game.load.image('triangle', 'asset/beach.png');
+	game.load.image('ball', 'asset/semicircle.png');
+	game.load.image('triangle', 'asset/semicircle.png');
 
 	//load physics body polygon data from a local JSON file
 	this.game.load.physics("physics", "asset/data.json");
-
 }
 function create() {
 
 	//set world boundaries, allowing room at the bottom for triangles to fall
-	game.world.setBounds(0,0,width,height+100);
+	game.world.setBounds(0,-100,width,height+50);
 
 	//start p2 physics engine
 	game.physics.startSystem(Phaser.Physics.P2JS);
@@ -49,10 +44,11 @@ function create() {
 	game.physics.p2.enable(ball, showBodies);
 	//add physics body polygon
 	ball.body.clearShapes();
-	//ball.body.loadPolygon("physics", "semicircle");
-	ball.body.setCircle(300);
+	ball.body.loadPolygon("physics", "semicircle");
+	//ball.body.setCircle(200);
 	//make ball kinematic so that it does not respond to collisions
 	ball.body.kinematic = true;
+	ball.body.angle = 180;
 
 	//initialize triangle group
 	triangles = game.add.group();
@@ -68,6 +64,10 @@ function create() {
 	timer = game.add.text(10, 10, gameDuration, { fontSize: "24px"} );
 	//decrement the remaining time every second
 	game.time.events.loop(1000, updateTimer, game);
+	
+}
+function render(){
+	//game.debug.body(ball);
 }
 function update() {
 	if (ball.body.velocity.y < maxTriangleSpeed) {
@@ -79,7 +79,7 @@ function update() {
 		ball.body.velocity.x = 0;
 	}
 
-	if(ball.position.y > height-250){ //ball is on the ground
+	if(ball.position.y > height-150){ //ball is on the ground
 		ball.position.y = 400; //fix bad position???
 		ball.body.velocity.y = 0;
 		if(cursors.up.isDown){
@@ -109,7 +109,7 @@ function update() {
 		if(cursors.down.isDown){
 			ball.body.velocity.y += 500;
 		}
-		if (cursors.left.isDown && ball.position.x > 0) {
+		if (cursors.left.isDown && ball.position.x > 10) {
 			ball.body.velocity.x -= ballSpeed/10;
 		}
 		else if (cursors.right.isDown && ball.position.x < width) {
@@ -126,8 +126,8 @@ function update() {
 		if (triangle.body.velocity.y < maxTriangleSpeed) {
 			triangle.body.velocity.y+= 20;
 		}
-		//destroy triangles that have left through the bottom of the viewport
-		if (triangle.position.y > height + 50) {
+		//destroy triangles that have left through the top of the viewport
+		if (triangle.position.y < height*0.1) {
 			triangle.destroy();
 		}
 	}
@@ -140,7 +140,7 @@ function spawnTriangle() {
 	game.physics.p2.enable(triangle, showBodies);
 	//add physics body polygon
 	triangle.body.clearShapes();
-	triangle.body.loadPolygon("physics", "triangle");
+	triangle.body.loadPolygon("physics", "semicircle");
 	//traingle.body.setCircle(100);
 	//move triangle downwards
 	triangle.body.moveDown(0);
