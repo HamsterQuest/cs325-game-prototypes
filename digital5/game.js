@@ -14,23 +14,36 @@ var showBodies = false;
 var currentTime = 0;
 var timer;
 var gameDuration = 30;
+<<<<<<< HEAD
 var prompt;
+=======
+>>>>>>> origin/master
 
 function preload() {
 	//set background color of canvas
 	game.stage.backgroundColor = '#eee';
 
 	//load assets
+<<<<<<< HEAD
 	game.load.image('player', 'asset/macaroni.png');
 	game.load.image('noodle', 'asset/semicircle.png');
+=======
+	game.load.image('ball', 'asset/semicircle.png');
+	game.load.image('triangle', 'asset/semicircle.png');
+>>>>>>> origin/master
 
 	//load physics body polygon data from a local JSON file
 	this.game.load.physics("physics", "asset/data.json");
 }
 function create() {
+<<<<<<< HEAD
 	prompt = game.add.text(width*0.5, height*0.5, "Clear the Macaronis!!", {fontSize: "40px"});
 	prompt.anchor.set(0.5);
 	//set world boundaries, allowing room at the bottom for noodles to fall
+=======
+
+	//set world boundaries, allowing room at the bottom for triangles to fall
+>>>>>>> origin/master
 	game.world.setBounds(0,-100,width,height+50);
 
 	//start p2 physics engine
@@ -45,12 +58,21 @@ function create() {
 	//player.scale.setTo(0.5,0.5);
 	game.physics.p2.enable(player, showBodies);
 	//add physics body polygon
+<<<<<<< HEAD
 	player.body.clearShapes();
 	player.body.loadPolygon("physics", "semicircle");
 	//player.body.setCircle(200);
 	//make player kinematic so that it does not respond to collisions
 	player.body.kinematic = true;
 	player.body.angle = 180;
+=======
+	ball.body.clearShapes();
+	ball.body.loadPolygon("physics", "semicircle");
+	//ball.body.setCircle(200);
+	//make ball kinematic so that it does not respond to collisions
+	ball.body.kinematic = true;
+	ball.body.angle = 180;
+>>>>>>> origin/master
 
 	//initialize noodle group
 	noodles = game.add.group();
@@ -66,10 +88,17 @@ function create() {
 	timer = game.add.text(10, 10, gameDuration, { fontSize: "24px"} );
 	//decrement the remaining time every second
 	game.time.events.loop(1000, updateTimer, game);
+<<<<<<< HEAD
 
 }
 function render(){
 	//game.debug.body(player);
+=======
+	
+}
+function render(){
+	//game.debug.body(ball);
+>>>>>>> origin/master
 }
 function update() {
 	if(currentTime == 1){
@@ -85,9 +114,15 @@ function update() {
 		player.body.velocity.x = 0;
 	}
 
+<<<<<<< HEAD
 	if(player.position.y > height-150){ //player is on the ground
 		player.position.y = 400; //fix bad position???
 		player.body.velocity.y = 0;
+=======
+	if(ball.position.y > height-150){ //ball is on the ground
+		ball.position.y = 400; //fix bad position???
+		ball.body.velocity.y = 0;
+>>>>>>> origin/master
 		if(cursors.up.isDown){
 			player.body.velocity.y -= 1000;
 		}
@@ -115,8 +150,13 @@ function update() {
 		if(cursors.down.isDown){
 			player.body.velocity.y += 500;
 		}
+<<<<<<< HEAD
 		if (cursors.left.isDown && player.position.x > 10) {
 			player.body.velocity.x -= playerSpeed/10;
+=======
+		if (cursors.left.isDown && ball.position.x > 10) {
+			ball.body.velocity.x -= ballSpeed/10;
+>>>>>>> origin/master
 		}
 		else if (cursors.right.isDown && player.position.x < width) {
 			player.body.velocity.x += playerSpeed/10;
@@ -132,9 +172,15 @@ function update() {
 		if (noodle.body.velocity.y < maxnoodleSpeed) {
 			noodle.body.velocity.y+= 20;
 		}
+<<<<<<< HEAD
 		//destroy noodles that have left through the top of the viewport
 		if (noodle.position.y < height*0.1) {
 			noodle.destroy();
+=======
+		//destroy triangles that have left through the top of the viewport
+		if (triangle.position.y < height*0.1) {
+			triangle.destroy();
+>>>>>>> origin/master
 		}
 	}
 }
@@ -145,8 +191,13 @@ function spawnnoodle() {
 	var noodle = game.add.sprite(x, height*0.1, "noodle");
 	game.physics.p2.enable(noodle, showBodies);
 	//add physics body polygon
+<<<<<<< HEAD
 	noodle.body.clearShapes();
 	noodle.body.loadPolygon("physics", "semicircle");
+=======
+	triangle.body.clearShapes();
+	triangle.body.loadPolygon("physics", "semicircle");
+>>>>>>> origin/master
 	//traingle.body.setCircle(100);
 	//move noodle downwards
 	noodle.body.moveDown(0);
