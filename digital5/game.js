@@ -16,6 +16,8 @@ var timer;
 var gameDuration = 30;
 var prompt;
 
+var music;
+
 function preload() {
 	//set background color of canvas
 	game.stage.backgroundColor = '#eee';
@@ -26,6 +28,9 @@ function preload() {
 
 	//load physics body polygon data from a local JSON file
 	this.game.load.physics("physics", "asset/data.json");
+	
+	game.load.audio('jam', ['assets/metajams revenge in space.mp3','assets/metajams revenge in space.ogg']);
+	
 }
 function create() {
 	prompt = game.add.text(width*0.5, height*0.5, "Clear the Macaronis!!", {fontSize: "40px"});
@@ -67,6 +72,8 @@ function create() {
 	//decrement the remaining time every second
 	game.time.events.loop(1000, updateTimer, game);
 
+	music = game.add.audio('jam');
+	music.play();
 }
 function render(){
 	//game.debug.body(player);
