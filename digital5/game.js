@@ -29,7 +29,7 @@ function preload() {
 	//load physics body polygon data from a local JSON file
 	this.game.load.physics("physics", "asset/data.json");
 	
-	game.load.audio('jam', ['assets/metajams revenge in space.mp3','assets/metajams revenge in space.ogg']);
+	game.load.audio('jam', ['asset/metajams revenge in space.mp3','assets/metajams revenge in space.ogg']);
 	
 }
 function create() {
